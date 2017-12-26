@@ -21,13 +21,28 @@ app.use(bodyParser.json( {type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 
 //db connection
-//mongoose.connect("mongodb://localhost/nytimes");
-mongoose.connect("mongodb://admin:password@ds163796.mlab.com:63796/nytimessearch");
-var db = mongoose.connection;
+// mongoose.connect("mongodb://localhost/nytimes");
+// mongoose.connect("mongodb://admin:password@ds163796.mlab.com:63796/nytimessearch");
+// var db = mongoose.connection;
 
-db.on("error", function(err){
+if(process.env.NODE_ENV == "production"){
+	mongoose.connect("mongodb://admin:password@ds163796.mlab.com:63796/nytimessearch")
+} else{
+	mongoose.connect("mongodb://localhost/nytimes")
+}
+var promise = mongoose.connect("mongodb://localhost/nytimes", {
+	useMongoClient: true
+});
+
+
+
+promise.on("error", function(err){
 	console.log("DB error: "+ err);
-})
+});
+
+promise.once("openUri", function(){
+	console.log("Connection successful")
+});
 
 app.get("/", function(req, res){
 	res.sendFile("./public/index.html");

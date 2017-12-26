@@ -19834,16 +19834,16 @@
 					{ className: 'row' },
 					React.createElement(
 						'div',
-						{ className: 'jumbotron', style: { 'backgroundImage': 'url(./assets/images/newspaper.jpg)', 'backgroundRepeat': 'no-repeat', 'backgroundPosition': 'center', 'backgroundSize': '100% 100%', 'backgroundAttachment': 'fixed' } },
+						{ className: 'jumbotron', style: { 'backgroundColor': '#428bca', 'backgroundPosition': 'center', 'backgroundSize': '100% 100%', 'backgroundAttachment': 'fixed' } },
 						React.createElement(
 							'h2',
 							{ className: 'text-center', style: { 'color': 'white', 'textShadow': '3px 3px 10px black', 'fontSize': '54px' } },
-							'New York Times Article Search and Save'
+							'New York Times Article Search'
 						),
 						React.createElement(
 							'p',
 							{ className: 'text-center', style: { 'color': 'white', 'textShadow': '3px 3px 10px black', 'fontSize': '24px' } },
-							'Search for and save articles of interest!'
+							'Search for and annotate articles of interest!'
 						)
 					)
 				),
@@ -21241,7 +21241,7 @@
 					React.createElement("br", null),
 					React.createElement(
 						"button",
-						{ type: "button", className: "btn btn-warning", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
+						{ type: "button", className: "btn btn-success", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
 						"Save"
 					)
 				);
@@ -21254,7 +21254,7 @@
 		render: function render() {
 			return React.createElement(
 				"div",
-				{ className: "panel panel-warning" },
+				{ className: "panel panel-primary" },
 				React.createElement(
 					"div",
 					{ className: "panel-heading" },
@@ -21322,7 +21322,7 @@
 					React.createElement("br", null),
 					React.createElement(
 						"button",
-						{ type: "button", className: "btn btn-success", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
+						{ type: "button", className: "btn btn-danger", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
 						"Delete"
 					)
 				);
@@ -21336,7 +21336,7 @@
 
 			return React.createElement(
 				"div",
-				{ className: "panel panel-success" },
+				{ className: "panel panel-primary" },
 				React.createElement(
 					"div",
 					{ className: "panel-heading" },
@@ -21372,7 +21372,7 @@
 	var axios = __webpack_require__(160);
 
 	// New York Times API
-	var nytAPI = "097be422255e45a18b6864a8176f4a6c";
+	const authKey = "3f16637e99b44d309b4273dd931aec09";
 
 	// Helper Functions
 	var helpers = {
@@ -21380,7 +21380,7 @@
 		runQuery: function runQuery(topic, startYear, endYear) {
 
 			//Figure out the geolocation
-			var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + nytAPI + "&q=" + topic + "&begin_date=" + startYear + "0101&end_date=" + endYear + "0101";
+			var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + topic + "&begin_date=" + startYear + "0101&end_date=" + endYear + "0101";
 
 			return axios.get(queryURL).then(function (response) {
 
