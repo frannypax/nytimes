@@ -1,14 +1,14 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var logger = require("morgan");
 var mongoose = require("mongoose");
+var logger = require("morgan");
 var axios = require("axios")
 
 var Article = require("./models/Article");
 
 //connecting to server
 var app = express();
-var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 //setting up morgan for logging
 app.use(logger("dev"));
