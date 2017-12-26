@@ -8,7 +8,7 @@ var Article = require("./models/Article");
 
 //connecting to server
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000;
 
 //setting up morgan for logging
 app.use(logger("dev"));
@@ -21,7 +21,8 @@ app.use(bodyParser.json( {type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 
 //db connection
-mongoose.connect("mongodb://localhost/nytimes");
+//mongoose.connect("mongodb://localhost/nytimes");
+mongoose.connect("mongodb://admin:password@ds163796.mlab.com:63796/nytimessearch");
 var db = mongoose.connection;
 
 db.on("error", function(err){
